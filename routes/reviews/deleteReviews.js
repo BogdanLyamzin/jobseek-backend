@@ -16,19 +16,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }         
-        /*
-       const deleteReview = await Review.findByIdAndDelete(req.params.id, function (err, deleteReview) {
-            // mongoose.disconnect();
-            if (err) return res.send({
-                status: "error",
-                result: err,
-            })
-           return deleteReview;
-       });
-        res.send({
-            status: "success",
-            result: deleteReview,
-        });
-        */
     });
 };

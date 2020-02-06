@@ -15,19 +15,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }          
-        /*
-       const oneReview = Review.findById(req.params.id, function (err, oneReview) {
-            // mongoose.disconnect();
-            if (err) return res.send({
-                status: "error",
-                result: err,
-            });
-       return oneReview;
-       });
-        res.send({
-            status: "success",
-            result: oneReview,
-        });
-        */
     });
 };

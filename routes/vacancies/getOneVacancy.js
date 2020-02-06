@@ -15,20 +15,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }         
-        /*
-        const oneVacancy = await Vacancy.findById(req.params.id, (err, vacancy) => {
-            // mongoose.disconnect();
-            if (err) return res.send({
-                status: "error",
-                result: err,
-            });
-            return vacancy;
-        });
-
-        res.send({
-            status: "success",
-            result: oneVacancy,
-        });
-        */
     });
 };

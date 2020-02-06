@@ -15,16 +15,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }        
-        /*
-        if (req.query) {
-            Company.find(req.query, (err, data) => {
-                res.send({"Status": "Success", result: data});
-            });
-        } else {
-            Company.find({}, (err, data) => {
-                res.send({"Status": "Success", result: data});
-            });
-        }
-        */
     });
 };

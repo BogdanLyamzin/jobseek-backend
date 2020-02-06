@@ -15,20 +15,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }         
-        /*
-        const vacancyList = await Vacancy.find(req.query, (err, vacancy) => {
-            // mongoose.disconnect();
-            if (err) return res.send({
-                status: "error",
-                result: err,
-            });
-            return vacancy;
-        });
-
-        res.send({
-            status: "success",
-            result: vacancyList,
-        });
-        */
     });
 };

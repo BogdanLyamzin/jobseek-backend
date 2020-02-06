@@ -26,14 +26,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }         
-        /*
-        company.save(function (err, data) {
-            if (err) {
-                res.send({status: "Error", message: err});
-            } else {
-                res.send(data);
-            }
-        });
-        */
     });
 };

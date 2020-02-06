@@ -15,18 +15,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }           
-        /*
-        const deleteHR = await HR.findByIdAndDelete(req.params.id, (err, deleteData) => {
-            if (err) return res.send({
-                status: "error",
-                result: err,
-            });
-            return deleteData;
-        });
-
-        res.send({
-            status: "success",
-            result: deleteHR,
-        });*/
     });
 };

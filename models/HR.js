@@ -21,16 +21,16 @@ const HR = Schema({
          type: Schema.Types.ObjectId,
          ref: "Company",        
 //        type: String,
-        required: true,
-    },
-    avatar: {
-        type: String,
-        required: true,
+        required: true
     },
     active: {
         type: Boolean,
         required: true,
         default: true,
+    },    
+    avatar: {
+        type: String,
+        required: true,
     },
     date: {
         type: Date,
