@@ -52,7 +52,6 @@ const getVacancyTemplates = require('./vacancyTemplate/getVacancyTemplates');
 const getVacancyTemplateId = require('./vacancyTemplate/getVacancyTemplateId');
 const deleteVacancyTemplate = require('./vacancyTemplate/deleteVacancyTemplate');
 
-module.exports = (app) => {
 const addCand = require("./candidates/addCand");
 const delCand = require("./candidates/delCand");
 const getAllCand = require("./candidates/getAllCand");
