@@ -9,13 +9,6 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({
-    storage: storage,
-    fileFilter: (req, file, cb) => {
-        checkFileType(file, cb);
-    }
-}).single('avatar');
-
 const checkFileType = (file, cb) => {
     const filetypes = /jpeg|jpg|png|gif/;
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -27,4 +20,9 @@ const checkFileType = (file, cb) => {
     }
 };
 
-module.exports = upload;
+module.exports = multer({
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        checkFileType(file, cb);
+    }
+});
