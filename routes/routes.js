@@ -22,28 +22,53 @@ const addCompany = require("./companies/addCompany");
 const getAllCompany = require("./companies/getAllCompanies");
 const getOneCompany = require("./companies/getOneCompany");
 
-module.exports = (app) => {  
+const addCand = require("./candidates/addCand");
+const delCand = require("./candidates/delCand");
+const getAllCand = require("./candidates/getAllCand");
+const getOneCand = require("./candidates/getOneCand");
+const putCand = require("./candidates/putCand");
+
+const addCv = require("./candidates/cv/addCv");
+const delCv = require("./candidates/cv/delCv");
+const getAllCv = require("./candidates/cv/getAllCv");
+const getOneCv = require("./candidates/cv/getOneCv");
+const putCv = require("./candidates/cv/putCv");
+
+
+module.exports = (app) => {
     addHR(app);
     putHR(app);
     getAllHR(app);
     getOneHR(app);
     deleteHR(app);
-    
+
     addVacancy(app);
     putVacancy(app);
     getAllVacancy(app);
     getOneVacancy(app);
     deleteVacancy(app);
-    
+
     getReviews(app);
     addReviews(app);
     editReviews(app);
     deleteReviews(app);
     getOneReview(app);
-    
+
     updateCompany(app);
     delCompany(app);
     addCompany(app);
     getAllCompany(app);
-    getOneCompany(app)
+    getOneCompany(app);
+
+    addCand(app);
+    putCand(app);
+    getAllCand(app);
+    getOneCand(app);
+    delCand(app);
+
+    addCv(app);
+    putCv(app);
+    getAllCv(app);
+    getOneCv(app);
+    delCv(app);
 };
