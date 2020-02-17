@@ -6,7 +6,8 @@ module.exports = (app) => {
         const cv = new Cv({
             userId: req.body.userId,
             activeCV: req.body.activeCV,
-            cvSkill: req.body.cvSkill
+            cvSkill: req.body.cvSkill,
+            date: req.body.date
         });
 
         try {

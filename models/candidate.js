@@ -52,7 +52,8 @@ const Candidate = Schema({
     },
     isActive: {
         type: Boolean,
-        required: true
+        required: true,
+        default: true
     },
     date: {
         type: Date,

@@ -6,6 +6,7 @@ module.exports = (app) => {
 
         const candidate = new Candidate({
             name: req.body.name,
+            avatar: req.body.avatar ? req.body.avatar : "avatar",
             lastName: req.body.lastName,
             city: req.body.city,
             country: req.body.country,
@@ -16,7 +17,8 @@ module.exports = (app) => {
             linkedinLink: req.body.linkedinLink,
             resumeJobs: req.body.resumeJobs,
             levelEng: req.body.levelEng,
-            isActive: req.body.isActive
+            isActive: req.body.isActive,
+            date: req.body.date
         });
 
         try {
