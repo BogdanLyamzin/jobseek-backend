@@ -15,10 +15,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }         
-        /*
-        Company.findById(req.params.id, (err, data) => {
-            res.send({"Status": "Success", result: data});
-        });
-        */
     });
 };

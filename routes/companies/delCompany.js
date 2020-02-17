@@ -14,14 +14,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }          
-        /*
-        Company.remove({_id: req.params.id}, company, (err, result ) => {
-            if (err) {
-                res.send({status:"Error", message: err});
-            } else {
-                res.send(req.body);
-            }
-        });
-        */
     });
 };

@@ -16,20 +16,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }        
-        /*
-     const reviewsList = Review.find(req.query, (err, review) => {
-         // mongoose.disconnect();
-         if (err) return res.send({
-             status: "error",
-             result: err,
-         });
-         return review;
-     });
-        res.send({
-            status: "success",
-            result: reviewsList,
-        });
-    });
-    */
     });
 };

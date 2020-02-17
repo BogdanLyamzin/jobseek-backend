@@ -15,20 +15,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }         
-        /*
-        const deleteVacancy = await Vacancy.findByIdAndDelete(req.params.id, (err, deleteData) => {
-            // mongoose.disconnect();
-            if (err) return res.send({
-                status: "error",
-                result: err,
-            });
-            return deleteData;
-        });
-
-        res.send({
-            status: "success",
-            result: deleteVacancy,
-        });
-        */
     });
 };

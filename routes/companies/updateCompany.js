@@ -14,17 +14,5 @@ module.exports = (app) => {
                     message: err,
                 });           
             }           
-        /*
-        const company = {};
-        for (let key in req.body) {
-            company[key] = req.body[key]
-        }
-        Company.updateOne({_id: req.params.id}, company, (err, result) => {
-            if (err) {
-                res.send({status: "Error", message:err});
-            } else {
-                res.send(req.body);
-            }
-        });*/
     });
 };

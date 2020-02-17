@@ -1,8 +1,3 @@
-const addAuthor = require('./authors/addAuthor');
-const getOneAuthor = require('./authors/getOneAuthor');
-
-const addBook = require('./books/addBook');
-
 const addHR = require('./hr/addHR');
 const putHR = require('./hr/putHR');
 const getAllHR = require('./hr/getAllHR');
@@ -27,12 +22,7 @@ const addCompany = require("./companies/addCompany");
 const getAllCompany = require("./companies/getAllCompanies");
 const getOneCompany = require("./companies/getOneCompany");
 
-module.exports = (app) => {
-    addAuthor(app);
-    getOneAuthor(app);
-    
-    addBook(app);    
-    
+module.exports = (app) => {  
     addHR(app);
     putHR(app);
     getAllHR(app);

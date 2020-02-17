@@ -15,19 +15,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }           
-        /*
-        const hrList = await HR.find(req.query, (err, hr) => {
-            if (err) return res.send({
-                status: "error",
-                result: err,
-            });
-            return hr;
-        });
-
-        res.send({
-            status: "success",
-            result: hrList,
-        });
-        */
     });
 };

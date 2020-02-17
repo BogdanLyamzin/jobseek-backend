@@ -31,19 +31,5 @@ module.exports = (app) => {
                 message: err,
             });           
         }         
-        /*
-        const newVacancy = await vacancy.save((err, data) => {
-            if (err) return res.send({
-                status: "error",
-                result: err,
-            });
-            return data;
-        });
-
-        res.send({
-            status: "success",
-            result: newVacancy,
-        });
-        */
     });
 };

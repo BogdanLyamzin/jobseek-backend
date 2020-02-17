@@ -8,11 +8,11 @@ module.exports = (app) => {
             phone: req.body.phone,
             email: req.body.email,
             companyId: req.body.companyId,
-            active: req.body.active,
-            date: req.body.date,
+            active: req.body.active,            
             avatar: req.body.avatar ? req.body.avatar : "avatar",
+            date: req.body.date            
         });
-
+        console.log(hr)
         try {
             const result = await hr.save();
             res.send({
