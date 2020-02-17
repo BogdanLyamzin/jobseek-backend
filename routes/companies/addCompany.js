@@ -11,6 +11,7 @@ module.exports = (app) => {
             website: req.body.website,
             facebookLink: req.body.facebookLink,
             linkedinLink: req.body.linkedinLink,
+            avatar: req.body.avatar ? req.body.avatar : "avatar",
             companyDescription: req.body.companyDescription
         });
         
