@@ -1,4 +1,5 @@
 const Company = require("../../models/Company");
+const upload = require("../../utils/uploadPhoto");
 
 module.exports = (app) => {
     app.put("/companies/:id", upload.single("avatar"), async (req, res) => {
