@@ -8,7 +8,7 @@ module.exports = (app) => {
             email: req.body.email,
             country: req.body.country,
             city: req.body.city,
-            companyWebsiteLink: req.body.companyWebsiteLink,
+            website: req.body.website,
             facebookLink: req.body.facebookLink,
             linkedinLink: req.body.linkedinLink,
             companyDescription: req.body.companyDescription
