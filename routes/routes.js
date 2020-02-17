@@ -52,7 +52,21 @@ const getVacancyTemplates = require('./vacancyTemplate/getVacancyTemplates');
 const getVacancyTemplateId = require('./vacancyTemplate/getVacancyTemplateId');
 const deleteVacancyTemplate = require('./vacancyTemplate/deleteVacancyTemplate');
 
-module.exports = (app) => {  
+module.exports = (app) => {
+const addCand = require("./candidates/addCand");
+const delCand = require("./candidates/delCand");
+const getAllCand = require("./candidates/getAllCand");
+const getOneCand = require("./candidates/getOneCand");
+const putCand = require("./candidates/putCand");
+
+const addCv = require("./candidates/cv/addCv");
+const delCv = require("./candidates/cv/delCv");
+const getAllCv = require("./candidates/cv/getAllCv");
+const getOneCv = require("./candidates/cv/getOneCv");
+const putCv = require("./candidates/cv/putCv");
+
+
+module.exports = (app) => {
     addHR(app);
     putHR(app);
     getAllHR(app);
@@ -106,4 +120,17 @@ module.exports = (app) => {
     getVacancyTemplates(app);
     getVacancyTemplateId(app);
     deleteVacancyTemplate(app);
+    getOneCompany(app);
+
+    addCand(app);
+    putCand(app);
+    getAllCand(app);
+    getOneCand(app);
+    delCand(app);
+
+    addCv(app);
+    putCv(app);
+    getAllCv(app);
+    getOneCv(app);
+    delCv(app);
 };
