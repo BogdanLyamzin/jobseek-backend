@@ -1,18 +1,23 @@
 const Company = require("../../models/Company");
 
 module.exports = (app) => {
-    app.put("/companies/:id", async (req, res) => {
-            try {
-                const result = await Company.findByIdAndUpdate(req.params.id, req.body);
-                res.send({
-                    status: "Success",
-                    result: result,
-                });                
-            } catch(err) {
-                res.send({
-                    status: "Error",
-                    message: err,
-                });           
-            }           
+    app.put("/companies/:id", upload.single("avatar"), async (req, res) => {
+        if (req.file) {
+            req.body.avatar = `http://${req.headers.host}/image/${req.file.filename}`;
+        }
+
+        try {
+            const result = await Company.findByIdAndUpdate(req.params.id, req.body, {new: true});
+            res.send({
+                status: "Success",
+                result: result,
+            });
+        } catch (err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
+
 };

@@ -7,7 +7,6 @@ const Company = Schema({
     },
     phone: {
         type: String,
-        required: true,
         min: 9,
         max: 11
     },
@@ -23,22 +22,21 @@ const Company = Schema({
         type: String,
         required: true
     },
-    companyWebsiteLink: {
+    website: {
         type: String,
         required: true
     },
     facebookLink: {
         type: String,
-        required: true
     },
     linkedinLink: {
         type: String,
-        required: true
     },
-    companyDescription: {
+    description: {
         type: String,
-        required: true
+        // required: true
     }
 });
+
 
 module.exports = model("Company", Company);
