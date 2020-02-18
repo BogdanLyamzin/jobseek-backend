@@ -1,17 +1,20 @@
 const Sphere = require("../../models/AdminPage/Sphere");
 
 module.exports = (app) => {
-    app.get('/spheres/:id', (req, res) => {
-        Sphere.findById(req.params.id, (err, oneSphere) => {
-            if (err) res.send({
+    app.get('/spheres/:id', async (req, res) => {
+
+        const result = await Sphere.findById(req.params.id, (err, sph) => {
+            // mongoose.disconnect();
+            if (err) return res.send({
                 status: "error",
-                message: 'Не удаллось получить сферу'
+                result: err,
             });
-            
-            else res.send({
-                status: "Success",
-                result: oneSphere,
-            });
+            return sph;
+        });
+
+        res.send({
+            status: "success",
+            result: result,
         });
     });
 };

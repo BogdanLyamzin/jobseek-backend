@@ -1,14 +1,19 @@
 const VacancyTemplate = require("../../models/AdminPage/vacancyTemplate");
 
 module.exports = (app) => {
-    app.get('/vacancy-template', (req, res) => {
-        VacancyTemplate.find({}, (err, allVacancies) => {
-            if (err) res.send({
-                status: "error",
-                message: 'Не удалось почулить все вакансии'
-            });
+    app.get('/vacancytemplate', async (req, res) => {
 
-            else res.send({status: "Success", result: allVacancies});
-        });
+        try {
+            const result = await VacancyTemplate.find(req.query);
+            res.send({
+                status: "Success",
+                result: result,
+            });
+        } catch(err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };

@@ -1,17 +1,19 @@
 const Profession = require("../../models/AdminPage/Profession");
 
 module.exports = (app) => {
-    app.put('/professions/:id', (req, res) => {
-        Profession.findByIdAndUpdate(req.params.id, req.body, (err, updateProfession) => {
-            if (err) res.send({
-                status: "error",
-                message: 'Не удаллось изменить професию'
-            });
-            
-            else res.send({
+    app.put('/professions/:id', async (req, res) => {
+
+        try {
+            const result = await Profession.findByIdAndUpdate(req.params.id, req.body);
+            res.send({
                 status: "Success",
-                result: updateProfession,
+                result: result,
             });
-        });
+        } catch (err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };

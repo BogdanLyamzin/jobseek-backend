@@ -1,22 +1,24 @@
 const Skill = require("../../models/AdminPage/Skill");
 
 module.exports = (app) => {
-    app.post('/skills', (req, res) => {
+    app.post('/skills', async (req, res) => {
         const skill = new Skill({
             skillName: req.body.skillName,
             categoryId: req.body.categoryId,
         });
-        skill.save((err, data) => {
-            if (err) res.send({
-                status: "error",
-                message: "Не удалось сохранить скилл"
-            });
-            
-            else res.send({
+
+        try {
+            const result = await skill.save();
+            res.send({
                 status: "Success",
-                result: data,
+                result: result,
             });
-        });
+        } catch(err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };
 

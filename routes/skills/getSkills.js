@@ -1,14 +1,19 @@
 const Skill = require("../../models/AdminPage/Skill");
 
 module.exports = (app) => {
-    app.get('/skills', (req, res) => {
-        Skill.find(req.query, (err, allSkills) => {
-            if (err) res.send({
-                status: "error",
-                message: 'Не удалось почулить все скиллы'
-            });
+    app.get('/skills', async (req, res) => {
 
-            else res.send({status: "Success", result: allSkills});
-        });
+        try {
+            const result = await Skill.find(req.query);
+            res.send({
+                status: "Success",
+                result: result,
+            });
+        } catch(err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };

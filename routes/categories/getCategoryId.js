@@ -1,17 +1,20 @@
 const Category = require("../../models/AdminPage/Category");
 
 module.exports = (app) => {
-    app.get('/categories/:id', (req, res) => {
-        Category.findById(req.params.id, (err, oneCategory) => {
-            if (err) res.send({
+    app.get('/categories/:id', async (req, res) => {
+        const result = await Category.findById(req.params.id, (err, ctg) => {
+            // mongoose.disconnect();
+            if (err) return res.send({
                 status: "error",
-                message: 'Не удаллось получить категорию'
+                result: err,
             });
-            
-            else res.send({
-                status: "Success",
-                result: oneCategory,
-            });
+            return ctg;
         });
+
+        res.send({
+            status: "success",
+            result: result,
+        });
+
     });
 };

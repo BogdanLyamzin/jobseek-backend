@@ -1,13 +1,19 @@
 const Category = require("../../models/AdminPage/Category");
 
 module.exports = (app) => {
-    app.delete('/categories/:id', (req, res) => {
-        Category.findByIdAndDelete(req.params.id, (err) => {
-            if (err) res.send({status: "error"});
-            
-            else res.send({
+    app.delete('/categories/:id', async (req, res) => {
+
+        try {
+            const result = await Category.findByIdAndDelete(req.params.id);
+            res.send({
                 status: "Success",
+                result: result,
             });
-        });
+        } catch(err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };

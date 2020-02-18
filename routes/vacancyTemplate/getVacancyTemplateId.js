@@ -1,17 +1,21 @@
 const VacancyTemplate = require("../../models/AdminPage/vacancyTemplate");
 
 module.exports = (app) => {
-    app.get('/vacancy-template/:id', (req, res) => {
-        VacancyTemplate.findById(req.params.id, (err, oneVacancy) => {
-            if (err) res.send({
+    app.get('/vacancytemplate/:id', async (req, res) => {
+
+        const result = await VacancyTemplate.findById(req.params.id, (err, ctg) => {
+            // mongoose.disconnect();
+            if (err) return res.send({
                 status: "error",
-                message: 'Не удаллось получить вакансию'
+                result: err,
             });
-            
-            else res.send({
-                status: "Success",
-                result: oneVacancy,
-            });
+            return ctg;
         });
+
+        res.send({
+            status: "success",
+            result: result,
+        });
+
     });
 };

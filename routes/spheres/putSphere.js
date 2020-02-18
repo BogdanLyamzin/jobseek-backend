@@ -1,17 +1,20 @@
 const Sphere = require("../../models/AdminPage/Sphere");
 
 module.exports = (app) => {
-    app.put('/spheres/:id', (req, res) => {
-        Sphere.findByIdAndUpdate(req.params.id, req.body, (err, updateSphere) => {
-            if (err) res.send({
-                status: "error",
-                message: 'Не удаллось изменить сферу'
-            });
-            
-            else res.send({
+    app.put('/spheres/:id', async (req, res) => {
+
+        try {
+            const result = await Sphere.findByIdAndUpdate(req.params.id, req.body);
+            res.send({
                 status: "Success",
-                result: updateSphere,
+                result: result,
             });
-        });
+        } catch (err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
+
     });
 };
