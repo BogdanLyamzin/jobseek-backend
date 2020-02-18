@@ -4,7 +4,7 @@ module.exports = (app) => {
     app.delete('/vacancies/:id', async (req, res) => {
         
         try {
-            const result = Vacancy.findByIdAndDelete(req.params.id);
+            const result = await Vacancy.findByIdAndDelete(req.params.id);
             res.send({
                 status: "Success",
                 result: result,
