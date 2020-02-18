@@ -1,17 +1,18 @@
 const Category = require("../../models/AdminPage/Category");
 
 module.exports = (app) => {
-    app.put('/categories/:id', (req, res) => {
-        Category.findByIdAndUpdate(req.params.id, req.body, (err, updateCategory) => {
-            if (err) res.send({
-                status: "error",
-                message: 'Не удаллось изменить категорию'
-            });
-            
-            else res.send({
+    app.put('/categories/:id', async (req, res) => {
+        try {
+            const result = await Category.findByIdAndUpdate(req.params.id, req.body);
+            res.send({
                 status: "Success",
-                result: updateCategory,
+                result: result,
             });
-        });
+        } catch (err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };

@@ -1,17 +1,20 @@
 const Skill = require("../../models/AdminPage/Skill");
 
 module.exports = (app) => {
-    app.get('/skills/:id', (req, res) => {
-        Skill.findById(req.params.id, (err, oneSkill) => {
-            if (err) res.send({
+    app.get('/skills/:id', async (req, res) => {
+
+        const result = await Skill.findById(req.params.id, (err, skill) => {
+            // mongoose.disconnect();
+            if (err) return res.send({
                 status: "error",
-                message: 'Не удаллось получить скилл'
+                result: err,
             });
-            
-            else res.send({
-                status: "Success",
-                result: oneSkill,
-            });
+            return skill;
+        });
+
+        res.send({
+            status: "success",
+            result: result,
         });
     });
 };

@@ -1,14 +1,18 @@
 const Category = require("../../models/AdminPage/Category");
 
 module.exports = (app) => {
-    app.get('/categories', (req, res) => {
-        Category.find({}, (err, allCategories) => {
-            if (err) res.send({
-                status: "error",
-                message: 'Не удалось почулить все категории'
+    app.get('/categories', async (req, res) => {
+        try {
+            const result = await Category.find(req.query);
+            res.send({
+                status: "Success",
+                result: result,
             });
-
-            else res.send({status: "Success", result: allCategories});
-        });
+        } catch(err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };

@@ -1,14 +1,19 @@
 const Profession = require("../../models/AdminPage/Profession");
 
 module.exports = (app) => {
-    app.get('/professions', (req, res) => {
-        Profession.find({}, (err, allProfessions) => {
-            if (err) res.send({
-                status: "error",
-                message: 'Не удалось почулить все професии'
-            });
+    app.get('/professions', async (req, res) => {
 
-            else res.send({status: "Success", result: allProfessions});
-        });
+        try {
+            const result = await Profession.find(req.query);
+            res.send({
+                status: "Success",
+                result: result,
+            });
+        } catch(err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };

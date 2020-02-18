@@ -1,16 +1,18 @@
 const Sphere = require("../../models/AdminPage/Sphere");
 
 module.exports = (app) => {
-    app.get('/spheres', (req, res) => {
-        Sphere.find({}, (err, allSpheres) => {
-            if (err) res.send({
-                status: "error",
-                message: 'Не удалось почулить все сферы'
-            });
-
-            else res.send({
+    app.get('/spheres', async (req, res) => {
+        try {
+            const result = await Sphere.find(req.query);
+            res.send({
                 status: "Success",
-                result: allSpheres});
-        });
+                result: result,
+            });
+        } catch(err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };

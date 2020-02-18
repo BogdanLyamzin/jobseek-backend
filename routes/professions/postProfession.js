@@ -1,21 +1,22 @@
 const Profession = require("../../models/AdminPage/Profession");
 
 module.exports = (app) => {
-    app.post('/professions', (req, res) => {
+    app.post('/professions', async (req, res) => {
         const profession = new Profession({
             professionName: req.body.professionName,
             sphereId: req.body.sphereId,
         });
-        profession.save((err, data) => {
-            if (err) res.send({
-                status: "error",
-                message: "Не удалось сохранить професию"
-            });
-            
-            else res.send({
+        try {
+            const result = await profession.save();
+            res.send({
                 status: "Success",
-                result: data,
+                result: result,
             });
-        });
+        } catch(err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };

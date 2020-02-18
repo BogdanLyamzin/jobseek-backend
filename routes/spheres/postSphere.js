@@ -1,20 +1,22 @@
 const Sphere = require("../../models/AdminPage/Sphere");
 
 module.exports = (app) => {
-    app.post('/spheres', (req, res) => {
+    app.post('/spheres', async (req, res) => {
         const sphere = new Sphere({
             sphereName: req.body.sphereName,
         });
-        sphere.save((err, data) => {
-            if (err) res.send({
-                status: "error",
-                message: "Не удалось сохранить сферу"
-            });
-            
-            else res.send({
+
+        try {
+            const result = await sphere.save();
+            res.send({
                 status: "Success",
-                result: data,
+                result: result,
             });
-        });
+        } catch(err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };

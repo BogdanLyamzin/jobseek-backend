@@ -1,16 +1,19 @@
 const Skill = require("../../models/AdminPage/Skill");
 
 module.exports = (app) => {
-    app.put('/skills/:id', (req, res) => {
-        Skill.findByIdAndUpdate(req.params.id, req.body, (err, updateSkill) => {
-            if (err) res.send({
-                status: "error",
-                message: 'Не удаллось изменить скилл'
-            });
-            else res.send({
+    app.put('/skills/:id', async (req, res) => {
+
+        try {
+            const result = await Skill.findByIdAndUpdate(req.params.id, req.body);
+            res.send({
                 status: "Success",
-                result: updateSkill,
+                result: result,
             });
-        });
+        } catch (err) {
+            res.send({
+                status: "Error",
+                message: err,
+            });
+        }
     });
 };
