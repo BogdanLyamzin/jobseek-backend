@@ -1,7 +1,7 @@
 const Cv = require ('../../../models/cv/cv');
 
 module.exports = (app) => {
-    app.post("/candidates/cvs", async (req, res) => {
+    app.post("/cvs", async (req, res) => {
 
         const cv = new Cv({
             userId: req.body.userId,

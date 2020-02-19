@@ -1,7 +1,7 @@
 const Cv = require ('../../../models/cv/cv');
 
 module.exports = (app) => {
-    app.get("/candidates/cvs/:id", async (req, res) => {
+    app.get("/cvs/:id", async (req, res) => {
 
         try {
             const result = await Cv.findById(req.params.id);
