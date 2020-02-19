@@ -1,18 +1,19 @@
 const Cv = require ('../../../models/cv/cv');
 
-module.exports = (app) => {
-    app.put("/candidates/cvs/:id", async (req, res) => {
-
+module.exports = app => {
+    app.put("/cvs/:id", async (req, res) => {
         try {
-            const result = await Cv.findByIdAndUpdate(req.params.id, req.body);
+            const result = await Cv.findByIdAndUpdate(req.params.id, req.body, {
+                new: true
+            });
             res.send({
                 status: "Success",
-                result: result,
+                result: result
             });
-        } catch(err) {
+        } catch (err) {
             res.send({
                 status: "Error",
-                message: err,
+                message: err
             });
         }
     });
