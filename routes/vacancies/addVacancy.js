@@ -9,7 +9,12 @@ module.exports = (app) => {
             salary: req.body.salary,
             englishLevel: req.body.englishLevel,
             programmLanguage: req.body.programmLanguage,
-            skills: req.body.skills,
+            skills: req.body.skills [
+                {
+                    id: "",
+                    experience: ""
+                }
+                ],
             employmentType: req.body.employmentType,
             description: req.body.description,
             online: req.body.online,
@@ -18,18 +23,19 @@ module.exports = (app) => {
             hrId: req.body.hrId,
             date: req.body.date,
         });
-        
+
+
         try {
             const result = await vacancy.save();
             res.send({
                 status: "Success",
                 result: result,
-            });                
+            });
         } catch(err) {
             res.send({
                 status: "Error",
                 message: err,
-            });           
-        }         
+            });
+        }
     });
 };
