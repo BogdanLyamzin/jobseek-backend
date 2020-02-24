@@ -6,7 +6,12 @@ module.exports = (app) => {
         const cv = new Cv({
             userId: req.body.userId,
             activeCV: req.body.activeCV,
-            cvSkill: req.body.cvSkill,
+            cvSkill: req.body.cvSkill [
+                    {
+                        id: "",
+                        experience: ""
+                    }
+                    ],
             date: req.body.date
         });
 
@@ -24,3 +29,5 @@ module.exports = (app) => {
         }
     });
 };
+
+
