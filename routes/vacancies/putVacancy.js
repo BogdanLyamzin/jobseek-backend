@@ -16,20 +16,5 @@ module.exports = app => {
         message: err
       });
     }
-    /*
-        const updateVacancy = await Vacancy.findByIdAndUpdate(req.params.id, req.body, (err, update) => {
-            // mongoose.disconnect();
-            if (err) return res.send({
-                status: "error",
-                result: err,
-            });
-            return update;
-        });
-
-        res.send({
-            status: "success",
-            result: updateVacancy,
-        });
-        */
   });
 };
