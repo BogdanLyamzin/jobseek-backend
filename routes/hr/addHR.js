@@ -1,7 +1,7 @@
 const HR = require("../../models/HR");
 
-module.exports = (app) => {
-    app.post('/hr', async (req, res) => {
+module.exports = (app, passport) => {
+    app.post('/hr', passport, async (req, res) => {
         const hr = new HR({
             name: req.body.name,
             lastName: req.body.lastName,

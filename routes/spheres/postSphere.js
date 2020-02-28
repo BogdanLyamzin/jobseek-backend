@@ -1,7 +1,7 @@
 const Sphere = require("../../models/AdminPage/Sphere");
 
-module.exports = (app) => {
-    app.post('/spheres', async (req, res) => {
+module.exports = (app, passport) => {
+    app.post('/spheres', passport, async (req, res) => {
         const sphere = new Sphere({
             sphereName: req.body.sphereName,
         });

@@ -1,7 +1,7 @@
 const Profession = require("../../models/AdminPage/Profession");
 
-module.exports = (app) => {
-    app.get('/professions', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/professions', passport, async (req, res) => {
 
         try {
             const result = await Profession.find(req.query);

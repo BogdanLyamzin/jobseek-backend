@@ -1,7 +1,7 @@
 const HR = require("../../models/HR");
 
-module.exports = (app) => {
-    app.get('/hr/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/hr/:id', passport, async (req, res) => {
         const oneHR = await HR.findById(req.params.id, (err, hr) => {
             // mongoose.disconnect();
             if (err) return res.send({

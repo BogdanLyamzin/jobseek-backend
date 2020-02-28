@@ -1,7 +1,7 @@
 const Skill = require("../../models/AdminPage/Skill");
 
-module.exports = (app) => {
-    app.post('/skills', async (req, res) => {
+module.exports = (app, passport) => {
+    app.post('/skills', passport, async (req, res) => {
         const skill = new Skill({
             skillName: req.body.skillName,
             categoryId: req.body.categoryId,

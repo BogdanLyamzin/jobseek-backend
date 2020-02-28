@@ -1,7 +1,7 @@
 const Review = require("../../models/Review");
 
-module.exports = (app) => {
-    app.post('/reviews', async (req, res) => {
+module.exports = (app, passport) => {
+    app.post('/reviews', passport, async (req, res) => {
         const review = new Review({
             reviewTxt: req.body.review,
             companyId: req.body.companyId,

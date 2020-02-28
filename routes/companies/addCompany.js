@@ -1,8 +1,8 @@
 const Company = require("../../models/Company");
 const upload = require("../../utils/uploadPhoto");
 
-module.exports = (app) => {
-    app.post("/companies",  upload.single("avatar"), async (req, res) => {
+module.exports = (app, passport) => {
+    app.post("/companies", passport,  upload.single("avatar"), async (req, res) => {
         const company = new Company({
             companyName: req.body.companyName,
             phone: req.body.phone,

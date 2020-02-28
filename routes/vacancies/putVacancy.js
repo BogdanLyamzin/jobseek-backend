@@ -1,7 +1,7 @@
 const Vacancy = require("../../models/Vacancy");
 
-module.exports = app => {
-  app.put("/vacancies/:id", async (req, res) => {
+module.exports = (app, passport) => {
+  app.put("/vacancies/:id", passport, async (req, res) => {
     try {
       const result = await Vacancy.findByIdAndUpdate(req.params.id, req.body, {
         new: true

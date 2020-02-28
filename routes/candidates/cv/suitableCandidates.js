@@ -1,8 +1,8 @@
 const Cv = require ('../../../models/cv/cv');
 const Vacancy = require("../../../models/Vacancy");
 
-module.exports = (app) => {
-    app.get("/suitableCandidates/:id", async (req, res) => {
+module.exports = (app, passport) => {
+    app.get("/suitableCandidates/:id", passport, async (req, res) => {
 
         try {
             const {skills} = await Vacancy.findById(req.params.id);

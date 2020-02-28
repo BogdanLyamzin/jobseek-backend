@@ -1,7 +1,7 @@
 const Sphere = require("../../models/AdminPage/Sphere");
 
-module.exports = (app) => {
-    app.get('/spheres/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/spheres/:id', passport, async (req, res) => {
 
         const result = await Sphere.findById(req.params.id, (err, sph) => {
             // mongoose.disconnect();

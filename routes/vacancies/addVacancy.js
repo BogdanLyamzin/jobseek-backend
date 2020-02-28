@@ -1,7 +1,7 @@
 const Vacancy = require("../../models/Vacancy");
 
-module.exports = (app) => {
-    app.post('/vacancies', async (req, res) => {
+module.exports = (app, passport) => {
+    app.post('/vacancies', passport, async (req, res) => {
         const vacancy = new Vacancy({
             vacancyName: req.body.vacancyName,
             country: req.body.country,

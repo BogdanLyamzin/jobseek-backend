@@ -1,7 +1,7 @@
 const Vacancy = require("../../models/Vacancy");
 
-module.exports = (app) => {
-    app.get('/vacancies/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/vacancies/:id', passport, async (req, res) => {
         
         try {
             const result = await Vacancy.findById(req.params.id);

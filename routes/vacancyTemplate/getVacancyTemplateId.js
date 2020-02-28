@@ -1,7 +1,7 @@
 const VacancyTemplate = require("../../models/AdminPage/vacancyTemplate");
 
-module.exports = (app) => {
-    app.get('/vacancytemplate/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/vacancytemplate/:id', passport, async (req, res) => {
 
         const result = await VacancyTemplate.findById(req.params.id, (err, ctg) => {
             // mongoose.disconnect();
