@@ -65,6 +65,7 @@ const getOneCv = require("./candidates/cv/getOneCv");
 const putCv = require("./candidates/cv/putCv");
 
 const suitableCandidates = require("./candidates/cv/suitableCandidates");
+const suitableVacancies = require("./vacancies/suitableVacancies");
 
 module.exports = app => {
   addHR(app);
@@ -135,4 +136,5 @@ module.exports = app => {
   delCv(app);
 
   suitableCandidates(app);
+  suitableVacancies(app);
 };

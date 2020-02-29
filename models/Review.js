@@ -4,13 +4,11 @@ const Review = Schema({
     companyId: {
         type: Schema.Types.ObjectId,
         ref: "Company",
-//        type: Number,
         required: true,
     },
-    userId: {
+    candidateId: {
         type: Schema.Types.ObjectId,
-        ref: "User",
-//        type: Number,
+        ref: "Candidate",
         required: true,
     },
     reviewTxt: {
