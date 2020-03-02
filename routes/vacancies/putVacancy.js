@@ -1,7 +1,11 @@
 const Vacancy = require("../../models/Vacancy");
 
-module.exports = (app, passport) => {
-  app.put("/vacancies/:id", passport, async (req, res) => {
+module.exports = app => {
+  app.put("/vacancies/:id", async (req, res) => {
+    if(req.body.active) {
+      req.body.date = Date.now();
+    }
+
     try {
       const result = await Vacancy.findByIdAndUpdate(req.params.id, req.body, {
         new: true
@@ -16,20 +20,5 @@ module.exports = (app, passport) => {
         message: err
       });
     }
-    /*
-        const updateVacancy = await Vacancy.findByIdAndUpdate(req.params.id, req.body, (err, update) => {
-            // mongoose.disconnect();
-            if (err) return res.send({
-                status: "error",
-                result: err,
-            });
-            return update;
-        });
-
-        res.send({
-            status: "success",
-            result: updateVacancy,
-        });
-        */
   });
 };

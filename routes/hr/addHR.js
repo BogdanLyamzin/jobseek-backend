@@ -1,4 +1,14 @@
 const HR = require("../../models/HR");
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'krozhkov09@gmail.com',
+        pass: 'Danit2019'
+    }
+});
+
 
 module.exports = (app, passport) => {
     app.post('/hr', passport, async (req, res) => {
@@ -12,13 +22,22 @@ module.exports = (app, passport) => {
             avatar: req.body.avatar ? req.body.avatar : "avatar",
             date: req.body.date            
         });
-        console.log(hr)
         try {
             const result = await hr.save();
+if(result) {
+    await transporter.sendMail({
+        from: 'jobseek', // sender address
+        to: req.body.email, // list of receivers
+        subject: "Hello ✔", // Subject line
+        text: "Hello world?", // plain text body
+        html: "<b>Hello world?</b>" // html body
+    });
+}
             res.send({
                 status: "Success",
                 result: result,
-            });                
+            });
+
         } catch(err) {
             res.send({
                 status: "Error",

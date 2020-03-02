@@ -1,20 +1,20 @@
-const addHR = require('./hr/addHR');
-const putHR = require('./hr/putHR');
-const getAllHR = require('./hr/getAllHR');
-const getOneHR = require('./hr/getOneHR');
-const deleteHR = require('./hr/deleteHR');
+const addHR = require("./hr/addHR");
+const putHR = require("./hr/putHR");
+const getAllHR = require("./hr/getAllHR");
+const getOneHR = require("./hr/getOneHR");
+const deleteHR = require("./hr/deleteHR");
 
-const addVacancy = require('./vacancies/addVacancy');
-const putVacancy = require('./vacancies/putVacancy');
-const getAllVacancy = require('./vacancies/getAllVacancy');
-const getOneVacancy = require('./vacancies/getOneVacancy');
-const deleteVacancy = require('./vacancies/deleteVacancy');
+const addVacancy = require("./vacancies/addVacancy");
+const putVacancy = require("./vacancies/putVacancy");
+const getAllVacancy = require("./vacancies/getAllVacancy");
+const getOneVacancy = require("./vacancies/getOneVacancy");
+const deleteVacancy = require("./vacancies/deleteVacancy");
 
-const getReviews = require('./reviews/getReviews');
-const addReviews = require('./reviews/addReviews');
-const editReviews = require('./reviews/editReviews');
-const deleteReviews = require('./reviews/deleteReviews');
-const getOneReview = require('./reviews/getOneReview');
+const getReviews = require("./reviews/getReviews");
+const addReviews = require("./reviews/addReviews");
+const editReviews = require("./reviews/editReviews");
+const deleteReviews = require("./reviews/deleteReviews");
+const getOneReview = require("./reviews/getOneReview");
 
 const updateCompany = require("./companies/updateCompany");
 const delCompany = require("./companies/delCompany");
@@ -22,35 +22,35 @@ const addCompany = require("./companies/addCompany");
 const getAllCompany = require("./companies/getAllCompanies");
 const getOneCompany = require("./companies/getOneCompany");
 
-const postCategory = require('./categories/postCategory');
-const putCategory = require('./categories/putCategory');
-const getCategories = require('./categories/getCategories');
-const getCategoryId = require('./categories/getCategoryId');
-const deleteCategory = require('./categories/deleteCategory');
+const postCategory = require("./categories/postCategory");
+const putCategory = require("./categories/putCategory");
+const getCategories = require("./categories/getCategories");
+const getCategoryId = require("./categories/getCategoryId");
+const deleteCategory = require("./categories/deleteCategory");
 
-const postProfession = require('./professions/postProfession');
-const putProfession = require('./professions/putProfession');
-const getProfessions = require('./professions/getProfessions');
-const getProfessionId = require('./professions/getProfessionId');
-const deleteProfession = require('./professions/deleteProfession');
+const postProfession = require("./professions/postProfession");
+const putProfession = require("./professions/putProfession");
+const getProfessions = require("./professions/getProfessions");
+const getProfessionId = require("./professions/getProfessionId");
+const deleteProfession = require("./professions/deleteProfession");
 
-const postSkill = require('./skills/postSkill');
-const putSkill = require('./skills/putSkill');
-const getSkills = require('./skills/getSkills');
-const getSkillId = require('./skills/getSkillId');
-const deleteSkill = require('./skills/deleteSkill');
+const postSkill = require("./skills/postSkill");
+const putSkill = require("./skills/putSkill");
+const getSkills = require("./skills/getSkills");
+const getSkillId = require("./skills/getSkillId");
+const deleteSkill = require("./skills/deleteSkill");
 
-const postSphere = require('./spheres/postSphere');
-const putSphere = require('./spheres/putSphere');
-const getSpheres = require('./spheres/getSphere');
-const getSphereId = require('./spheres/getSphereId');
-const deleteSphere = require('./spheres/deleteSphere');
+const postSphere = require("./spheres/postSphere");
+const putSphere = require("./spheres/putSphere");
+const getSpheres = require("./spheres/getSphere");
+const getSphereId = require("./spheres/getSphereId");
+const deleteSphere = require("./spheres/deleteSphere");
 
-const postVacancyTemplate = require('./vacancyTemplate/postVacancyTemplate');
-const putVacancyTemplate = require('./vacancyTemplate/putVacancyTemplate');
-const getVacancyTemplates = require('./vacancyTemplate/getVacancyTemplates');
-const getVacancyTemplateId = require('./vacancyTemplate/getVacancyTemplateId');
-const deleteVacancyTemplate = require('./vacancyTemplate/deleteVacancyTemplate');
+const postVacancyTemplate = require("./vacancyTemplate/postVacancyTemplate");
+const putVacancyTemplate = require("./vacancyTemplate/putVacancyTemplate");
+const getVacancyTemplates = require("./vacancyTemplate/getVacancyTemplates");
+const getVacancyTemplateId = require("./vacancyTemplate/getVacancyTemplateId");
+const deleteVacancyTemplate = require("./vacancyTemplate/deleteVacancyTemplate");
 
 const addCand = require("./candidates/addCand");
 const delCand = require("./candidates/delCand");
@@ -73,6 +73,7 @@ const socialAuth = require("./auth/socialAuth");
 const admin = require("./auth/admin")
 
 const suitableCandidates = require("./candidates/cv/suitableCandidates");
+const suitableVacancies = require("./vacancies/suitableVacancies");
 
 module.exports = (app, passport) => {
     addHR(app, passport);
@@ -80,19 +81,19 @@ module.exports = (app, passport) => {
     getAllHR(app, passport);
     getOneHR(app, passport);
     deleteHR(app, passport);
-    
+
     addVacancy(app, passport);
     putVacancy(app, passport);
     getAllVacancy(app, passport);
     getOneVacancy(app, passport);
     deleteVacancy(app, passport);
-    
+
     getReviews(app, passport);
     addReviews(app, passport);
     editReviews(app, passport);
     deleteReviews(app, passport);
     getOneReview(app, passport);
-    
+
     updateCompany(app, passport);
     delCompany(app, passport);
     addCompany(app, passport);
@@ -149,7 +150,7 @@ module.exports = (app, passport) => {
     setNewPass(app);
     socialAuth(app);
     admin(app)
-    
+
     suitableCandidates(app, passport);
-    
+    suitableVacancies(app, passport);
 };

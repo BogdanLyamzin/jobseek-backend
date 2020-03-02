@@ -4,7 +4,7 @@ module.exports = (app, passport) => {
     app.put('/reviews/:id', passport, async (req, res) => {
         
         try {
-            const result = await Review.findByIdAndUpdate(req.params.id, req.body);
+            const result = await Review.findByIdAndUpdate(req.params.id, req.body, {new: true});
             res.send({
                 status: "Success",
                 result: result,
