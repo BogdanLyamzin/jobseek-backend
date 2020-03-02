@@ -5,9 +5,9 @@ module.exports = (app) => {
         const review = new Review({
             reviewTxt: req.body.reviewTxt,
             companyId: req.body.companyId,
+            candidateName: req.body.candidateName,
             candidateId: req.body.candidateId,
             date: req.body.date,
-            mark: req.body.mark
         });
 
         try {
