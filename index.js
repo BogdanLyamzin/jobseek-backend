@@ -12,7 +12,6 @@ require('dotenv').config()
 
 
 const routes = require('./routes/routes');
-const db = require('./configs/db').mongoURI;
 
 const app = express();
 app.use(cors());
