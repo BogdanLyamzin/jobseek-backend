@@ -10,9 +10,9 @@ module.exports = app => {
       try {
         const allCvs = await Cv.find({});
 
-        const suitableCandidates = allCvs.filter(({ cvSkill, activeCV }) => {
+        const suitableCandidates = allCvs.filter(({ skills, activeCV }) => {
           let suitableSkillsCount = 0;
-          cvSkill.forEach(({ id, experience }) => {
+          skills.forEach(({ id, experience }) => {
             if (
               skills.find(
                 skill => skill.id === id && skill.experience <= experience

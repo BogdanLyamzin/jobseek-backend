@@ -1,4 +1,5 @@
 const {Schema, model} = require("mongoose");
+const Skills = require("../subSchema/Skills");
 
 const Cv = Schema ({
     userId: {
@@ -11,10 +12,11 @@ const Cv = Schema ({
         required: true,
         default: true
     },
-     cvSkill: {
+    skills: [Skills],
+    employmentType: {
         type: Array,
-         required: true
-     },
+        required: true
+    },
     date: {
         type: Date,
         required: true,
