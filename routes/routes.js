@@ -70,6 +70,7 @@ const register = require("./auth/register");
 const resetPassport = require("./auth/resetpassword");
 const setNewPass = require("./auth/setNewPass");
 const socialAuth = require("./auth/socialAuth");
+const admin = require("./auth/admin")
 
 const suitableCandidates = require("./candidates/cv/suitableCandidates");
 
@@ -147,6 +148,7 @@ module.exports = (app, passport) => {
     resetPassport(app);
     setNewPass(app);
     socialAuth(app);
+    admin(app)
     
     suitableCandidates(app, passport);
     

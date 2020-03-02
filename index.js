@@ -8,6 +8,7 @@ const googleStrategy = require('./configs/passport').googleStrategy
 const linkedinStrategy = require('./configs/passport').linkedinStrategy
 const passport = require('passport')
 const auth = require("./middlewares/auth");
+require('dotenv').config()
 
 
 const routes = require('./routes/routes');
@@ -27,7 +28,7 @@ passport.use(linkedinStrategy)
 app.use(passport.initialize())
 
 // Database connect
-mongoose.connect(db, {
+mongoose.connect(process.env.DATA_BASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
