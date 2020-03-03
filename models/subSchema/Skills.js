@@ -12,7 +12,9 @@ const Skills = new Schema({
   experience: {
     type: Number,
     required: true,
+    min: 0,
+    max: 8,
   }
-});
+}, { _id : false });
 
 module.exports = Skills;
