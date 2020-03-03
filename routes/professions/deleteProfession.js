@@ -1,7 +1,7 @@
 const Profession = require("../../models/AdminPage/Profession");
 
-module.exports = (app) => {
-    app.delete('/professions/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.delete('/professions/:id', passport, async (req, res) => {
 
         try {
             const result = await Profession.findByIdAndDelete(req.params.id);

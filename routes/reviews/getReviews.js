@@ -1,8 +1,8 @@
 const Review = require('../../models/Review');
 
 
-module.exports = (app) => {
-    app.get('/reviews',  async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/reviews', passport,  async (req, res) => {
         
         try {
             const result = await Review.find(req.query);

@@ -1,7 +1,7 @@
 const Category = require("../../models/AdminPage/Category");
 
-module.exports = (app) => {
-    app.put('/categories/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.put('/categories/:id', passport, async (req, res) => {
         try {
             const result = await Category.findByIdAndUpdate(req.params.id, req.body);
             res.send({

@@ -1,7 +1,7 @@
 const HR = require("../../models/HR");
 
-module.exports = (app) => {
-    app.delete('/hr/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.delete('/hr/:id', passport, async (req, res) => {
         
         try {
             const result = await HR.findByIdAndDelete(req.params.id);

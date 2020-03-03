@@ -1,8 +1,8 @@
 const Candidate = require ('../../models/candidate');
 const upload = require("../../utils/uploadPhoto");
 
-module.exports = app => {
-    app.put("/candidates/:id", upload.single("avatar"), async (req, res) => {
+module.exports = (app, passport) => {
+    app.put("/candidates/:id", passport, upload.single("avatar"), async (req, res) => {
         if (req.file) {
             req.body.avatar = `http://${req.headers.host}/image/${req.file.filename}`;
         }

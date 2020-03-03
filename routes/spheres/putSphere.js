@@ -1,7 +1,7 @@
 const Sphere = require("../../models/AdminPage/Sphere");
 
-module.exports = (app) => {
-    app.put('/spheres/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.put('/spheres/:id', passport, async (req, res) => {
 
         try {
             const result = await Sphere.findByIdAndUpdate(req.params.id, req.body);

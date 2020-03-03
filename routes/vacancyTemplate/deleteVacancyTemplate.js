@@ -1,7 +1,7 @@
 const VacancyTemplate = require("../../models/AdminPage/vacancyTemplate");
 
-module.exports = (app) => {
-    app.delete('/vacancytemplate/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.delete('/vacancytemplate/:id', passport, async (req, res) => {
 
         try {
             const result = await VacancyTemplate.findByIdAndDelete(req.params.id);

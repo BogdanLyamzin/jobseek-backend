@@ -1,7 +1,7 @@
 const Skill = require("../../models/AdminPage/Skill");
 
-module.exports = (app) => {
-    app.get('/skills/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/skills/:id', passport, async (req, res) => {
 
         const result = await Skill.findById(req.params.id, (err, skill) => {
             // mongoose.disconnect();

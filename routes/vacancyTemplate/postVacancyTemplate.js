@@ -1,7 +1,7 @@
 const VacancyTemplate = require("../../models/AdminPage/vacancyTemplate");
 
-module.exports = (app) => {
-    app.post('/vacancytemplate', async (req, res) => {
+module.exports = (app, passport) => {
+    app.post('/vacancytemplate', passport, async (req, res) => {
 
         const vacancy = new VacancyTemplate({
             vacancyName: req.body.vacancyName,
