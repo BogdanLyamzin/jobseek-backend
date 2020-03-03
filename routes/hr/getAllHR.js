@@ -1,5 +1,4 @@
 const HR = require("../../models/HR");
-
 module.exports = (app) => {
     app.get('/hr', async (req, res) => {
         

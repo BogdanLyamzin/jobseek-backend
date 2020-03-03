@@ -1,6 +1,6 @@
 const HR = require("../../models/HR");
 const nodemailer = require('nodemailer');
-
+const passwordGenerator = require("password-generator");
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -25,12 +25,13 @@ module.exports = (app) => {
         try {
             const result = await hr.save();
 if(result) {
+    const password = passwordGenerator(12,false)
     await transporter.sendMail({
         from: 'jobseek', // sender address
         to: req.body.email, // list of receivers
         subject: "Hello ✔", // Subject line
-        text: "Hello world?", // plain text body
-        html: "<b>Hello world?</b>" // html body
+        text: "Hello world!", // plain text body
+        html: "<b>Hello world? Your password : </b>" +password// html body
     });
 }
             res.send({
