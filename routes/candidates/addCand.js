@@ -6,7 +6,7 @@ module.exports = (app, passport) => {
 
         const candidate = new Candidate({
             name: req.body.name,
-            avatar: req.body.avatar ? req.body.avatar : "avatar",
+            avatar: req.body.avatar ? req.body.avatar : null,
             lastName: req.body.lastName,
             city: req.body.city,
             country: req.body.country,
@@ -17,7 +17,7 @@ module.exports = (app, passport) => {
             linkedinLink: req.body.linkedinLink,
             resumeJobs: req.body.resumeJobs,
             levelEng: req.body.levelEng,
-            isActive: req.body.isActive,
+            active: req.body.active,
             date: req.body.date
         });
 

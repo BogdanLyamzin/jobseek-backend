@@ -1,8 +1,8 @@
 const Cv = require("../../models/cv/cv");
 const Vacancy = require("../../models/Vacancy");
 
-module.exports = app => {
-    app.get("/suitableVacancies/:id", async (req, res) => {
+module.exports = (app, passport) => {
+    app.get("/suitableVacancies/:id", passport, async (req, res) => {
         try {
             const { cvSkill } = await Cv.findById(req.params.id);
             const skillsCount = cvSkill.length;

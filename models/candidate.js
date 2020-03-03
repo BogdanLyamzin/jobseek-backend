@@ -3,26 +3,27 @@ const {Schema, model} = require("mongoose");
 const Candidate = Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     avatar: {
-        type: String
+        type: String,
+        required: false,
     },
     lastName: {
         type: String,
-        required: true
+        required: true,
     },
     city: {
         type: String,
-        required: true
+        required: true,
     },
     country: {
         type: String,
-        required: true
+        required: true,
     },
     email: {
         type: String,
-        required: true
+        required: true,
     },
     phone: {
         type: String,
@@ -32,28 +33,28 @@ const Candidate = Schema({
     },
     repositoryLink: {
         type: String,
-        required: false
+        required: false,
     },
     facebookLink: {
         type: String,
-        required: false
+        required: false,
     },
     linkedinLink: {
         type: String,
-        required: false
+        required: false,
     },
     resumeJobs:{
         type: Object,
-        required: true
+        required: true,
     },
     levelEng: {
-        type: Array,
-        required: true
+        type: String,
+        required: true,
     },
-    isActive: {
+    active: {
         type: Boolean,
         required: true,
-        default: true
+        default: true,
     },
     date: {
         type: Date,
