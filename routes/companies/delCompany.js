@@ -1,7 +1,7 @@
 const Company = require("../../models/Company");
 
-module.exports = (app) => {
-    app.delete("/companies/:id", async (req, res) => {
+module.exports = (app, passport) => {
+    app.delete("/companies/:id", passport, async (req, res) => {
         try {
             const result = await Company.remove({_id: req.params.id});
             res.send({

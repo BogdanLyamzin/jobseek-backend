@@ -4,13 +4,15 @@ const Review = Schema({
     companyId: {
         type: Schema.Types.ObjectId,
         ref: "Company",
-//        type: Number,
         required: true,
     },
-    userId: {
+    candidateId: {
         type: Schema.Types.ObjectId,
-        ref: "User",
-//        type: Number,
+        ref: "Candidate",
+        required: true,
+    },
+    candidateName: {
+        type: String,
         required: true,
     },
     reviewTxt: {
@@ -21,10 +23,6 @@ const Review = Schema({
         type: Date,
         required: true,
         default: Date.now,
-    },
-    mark: {
-        type: Number,
-        required: true,
     },
 },  {versionKey: false});
 

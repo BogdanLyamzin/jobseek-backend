@@ -1,7 +1,7 @@
 const Skill = require("../../models/AdminPage/Skill");
 
-module.exports = (app) => {
-    app.delete('/skills/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.delete('/skills/:id', passport, async (req, res) => {
 
         try {
             const result = await Skill.findByIdAndDelete(req.params.id);

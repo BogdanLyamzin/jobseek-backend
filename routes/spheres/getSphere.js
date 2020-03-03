@@ -1,7 +1,7 @@
 const Sphere = require("../../models/AdminPage/Sphere");
 
-module.exports = (app) => {
-    app.get('/spheres', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/spheres', passport, async (req, res) => {
         try {
             const result = await Sphere.find(req.query);
             res.send({

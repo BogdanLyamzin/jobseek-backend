@@ -1,7 +1,7 @@
 const Skill = require("../../models/AdminPage/Skill");
 
-module.exports = (app) => {
-    app.put('/skills/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.put('/skills/:id', passport, async (req, res) => {
 
         try {
             const result = await Skill.findByIdAndUpdate(req.params.id, req.body);

@@ -1,7 +1,7 @@
 const Skill = require("../../models/AdminPage/Skill");
 
-module.exports = (app) => {
-    app.get('/skills', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/skills', passport, async (req, res) => {
 
         try {
             const result = await Skill.find(req.query);

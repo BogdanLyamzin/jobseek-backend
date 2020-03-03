@@ -1,7 +1,7 @@
 const Cv = require ('../../../models/cv/cv');
 
-module.exports = (app) => {
-    app.delete("/cvs/:id", async (req, res) => {
+module.exports = (app, passport) => {
+    app.delete("/cvs/:id", passport, async (req, res) => {
 
         try {
             const result = await Cv.findByIdAndDelete(req.params.id);

@@ -1,7 +1,7 @@
 const Company = require("../../models/Company");
 
-module.exports = (app) => {
-    app.get("/companies/:id", async (req, res) => {
+module.exports = (app, passport) => {
+    app.get("/companies/:id", passport, async (req, res) => {
         
         try {
             const result = await Company.findById(req.params.id);

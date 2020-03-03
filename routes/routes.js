@@ -64,75 +64,93 @@ const getAllCv = require("./candidates/cv/getAllCv");
 const getOneCv = require("./candidates/cv/getOneCv");
 const putCv = require("./candidates/cv/putCv");
 
+const login = require("./auth/login");
+const mailConfirm = require("./auth/mailConfirm");
+const register = require("./auth/register");
+const resetPassport = require("./auth/resetpassword");
+const setNewPass = require("./auth/setNewPass");
+const socialAuth = require("./auth/socialAuth");
+const admin = require("./auth/admin")
+
 const suitableCandidates = require("./candidates/cv/suitableCandidates");
+const suitableVacancies = require("./vacancies/suitableVacancies");
 
-module.exports = app => {
-  addHR(app);
-  putHR(app);
-  getAllHR(app);
-  getOneHR(app);
-  deleteHR(app);
+module.exports = (app, passport) => {
+    addHR(app, passport);
+    putHR(app, passport);
+    getAllHR(app, passport);
+    getOneHR(app, passport);
+    deleteHR(app, passport);
 
-  addVacancy(app);
-  putVacancy(app);
-  getAllVacancy(app);
-  getOneVacancy(app);
-  deleteVacancy(app);
+    addVacancy(app, passport);
+    putVacancy(app, passport);
+    getAllVacancy(app, passport);
+    getOneVacancy(app, passport);
+    deleteVacancy(app, passport);
 
-  getReviews(app);
-  addReviews(app);
-  editReviews(app);
-  deleteReviews(app);
-  getOneReview(app);
+    getReviews(app, passport);
+    addReviews(app, passport);
+    editReviews(app, passport);
+    deleteReviews(app, passport);
+    getOneReview(app, passport);
 
-  updateCompany(app);
-  delCompany(app);
-  addCompany(app);
-  getAllCompany(app);
-  getOneCompany(app);
+    updateCompany(app, passport);
+    delCompany(app, passport);
+    addCompany(app, passport);
+    getAllCompany(app, passport);
+    getOneCompany(app, passport);
 
-  postCategory(app);
-  putCategory(app);
-  getCategories(app);
-  getCategoryId(app);
-  deleteCategory(app);
+    postCategory(app, passport);
+    putCategory(app, passport);
+    getCategories(app, passport);
+    getCategoryId(app, passport);
+    deleteCategory(app, passport);
 
-  postProfession(app);
-  putProfession(app);
-  getProfessions(app);
-  getProfessionId(app);
-  deleteProfession(app);
+    postProfession(app, passport);
+    putProfession(app, passport);
+    getProfessions(app, passport);
+    getProfessionId(app, passport);
+    deleteProfession(app, passport);
 
-  postSkill(app);
-  putSkill(app);
-  getSkills(app);
-  getSkillId(app);
-  deleteSkill(app);
+    postSkill(app, passport);
+    putSkill(app, passport);
+    getSkills(app, passport);
+    getSkillId(app, passport);
+    deleteSkill(app, passport);
 
-  postSphere(app);
-  putSphere(app);
-  getSpheres(app);
-  getSphereId(app);
-  deleteSphere(app);
+    postSphere(app, passport);
+    putSphere(app, passport);
+    getSpheres(app, passport);
+    getSphereId(app, passport);
+    deleteSphere(app, passport);
 
-  postVacancyTemplate(app);
-  putVacancyTemplate(app);
-  getVacancyTemplates(app);
-  getVacancyTemplateId(app);
-  deleteVacancyTemplate(app);
-  getOneCompany(app);
+    postVacancyTemplate(app, passport);
+    putVacancyTemplate(app, passport);
+    getVacancyTemplates(app, passport);
+    getVacancyTemplateId(app, passport);
+    deleteVacancyTemplate(app, passport);
+    getOneCompany(app, passport);
 
-  addCand(app);
-  putCand(app);
-  getAllCand(app);
-  getOneCand(app);
-  delCand(app);
+    addCand(app, passport);
+    putCand(app, passport);
+    getAllCand(app, passport);
+    getOneCand(app, passport);
+    delCand(app, passport);
 
-  addCv(app);
-  putCv(app);
-  getAllCv(app);
-  getOneCv(app);
-  delCv(app);
+    addCv(app, passport);
+    putCv(app, passport);
+    getAllCv(app, passport);
+    getOneCv(app, passport);
+    delCv(app, passport);
 
-  suitableCandidates(app);
+    login(app);
+    mailConfirm(app);
+    register(app);
+    resetPassport(app);
+    setNewPass(app);
+    socialAuth(app);
+    admin(app)
+
+    suitableCandidates(app, passport);
+    suitableVacancies(app, passport);
 };

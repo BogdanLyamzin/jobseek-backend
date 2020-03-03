@@ -1,7 +1,7 @@
 const Category = require("../../models/AdminPage/Category");
 
-module.exports = (app) => {
-    app.post('/categories', async (req, res) => {
+module.exports = (app, passport) => {
+    app.post('/categories', passport, async (req, res) => {
 
         const category = new Category({
             categoryName: req.body.categoryName,

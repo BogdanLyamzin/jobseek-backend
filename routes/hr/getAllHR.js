@@ -1,6 +1,7 @@
 const HR = require("../../models/HR");
-module.exports = (app) => {
-    app.get('/hr', async (req, res) => {
+
+module.exports = (app, passport) => {
+    app.get('/hr', passport, async (req, res) => {
         
         try {
             const result = await HR.find(req.query);

@@ -1,8 +1,8 @@
 const Candidate = require ('../../models/candidate');
 
 
-module.exports = (app) => {
-    app.get("/candidates/:id", async (req, res) => {
+module.exports = (app, passport) => {
+    app.get("/candidates/:id", passport, async (req, res) => {
 
         try {
             const result = await Candidate.findById(req.params.id);
