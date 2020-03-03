@@ -1,7 +1,7 @@
 const Vacancy = require("../../models/Vacancy");
 
-module.exports = (app) => {
-    app.delete('/vacancies/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.delete('/vacancies/:id', passport, async (req, res) => {
         
         try {
             const result = await Vacancy.findByIdAndDelete(req.params.id);

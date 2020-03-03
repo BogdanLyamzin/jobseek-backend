@@ -1,7 +1,7 @@
 const Category = require("../../models/AdminPage/Category");
 
-module.exports = (app) => {
-    app.get('/categories/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/categories/:id', passport, async (req, res) => {
         const result = await Category.findById(req.params.id, (err, ctg) => {
             // mongoose.disconnect();
             if (err) return res.send({

@@ -1,7 +1,7 @@
 const Category = require("../../models/AdminPage/Category");
 
-module.exports = (app) => {
-    app.get('/categories', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/categories', passport, async (req, res) => {
         try {
             const result = await Category.find(req.query);
             res.send({

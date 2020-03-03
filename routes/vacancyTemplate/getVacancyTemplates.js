@@ -1,7 +1,7 @@
 const VacancyTemplate = require("../../models/AdminPage/vacancyTemplate");
 
-module.exports = (app) => {
-    app.get('/vacancytemplate', async (req, res) => {
+module.exports = (app, passport) => {
+    app.get('/vacancytemplate', passport, async (req, res) => {
 
         try {
             const result = await VacancyTemplate.find(req.query);

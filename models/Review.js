@@ -11,6 +11,10 @@ const Review = Schema({
         ref: "Candidate",
         required: true,
     },
+    candidateName: {
+        type: String,
+        required: true,
+    },
     reviewTxt: {
         type: String,
         required: true,
@@ -19,10 +23,6 @@ const Review = Schema({
         type: Date,
         required: true,
         default: Date.now,
-    },
-    mark: {
-        type: Number,
-        required: true,
     },
 },  {versionKey: false});
 

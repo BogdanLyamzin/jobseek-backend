@@ -1,8 +1,8 @@
 const Cv = require ('../../../models/cv/cv');
 
-module.exports = (app) => {
-    app.get("/cvs", async (req, res) => {
-        console.log(req.query)
+module.exports = (app, passport) => {
+    app.get("/cvs", passport, async (req, res) => {
+
         try {
             const result = await Cv.find(req.query);
             res.send({

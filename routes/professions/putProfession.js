@@ -1,7 +1,7 @@
 const Profession = require("../../models/AdminPage/Profession");
 
-module.exports = (app) => {
-    app.put('/professions/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.put('/professions/:id', passport, async (req, res) => {
 
         try {
             const result = await Profession.findByIdAndUpdate(req.params.id, req.body);

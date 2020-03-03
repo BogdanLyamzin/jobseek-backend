@@ -1,8 +1,8 @@
 const Candidate = require ('../../models/candidate');
 
 
-module.exports = (app) => {
-    app.post("/candidates", async (req, res) => {
+module.exports = (app, passport) => {
+    app.post("/candidates", passport, async (req, res) => {
 
         const candidate = new Candidate({
             name: req.body.name,

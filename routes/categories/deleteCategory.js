@@ -1,7 +1,7 @@
 const Category = require("../../models/AdminPage/Category");
 
-module.exports = (app) => {
-    app.delete('/categories/:id', async (req, res) => {
+module.exports = (app, passport) => {
+    app.delete('/categories/:id', passport, async (req, res) => {
 
         try {
             const result = await Category.findByIdAndDelete(req.params.id);
