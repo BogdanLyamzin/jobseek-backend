@@ -22,7 +22,7 @@ module.exports = app => {
         try{
             if(req.body.password === user.password) {
 
-                const token = jwt.sign({_id: user. _id}, process.env.TOKEN_SECRET)
+                const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET)
                 return res.json({"status": "success", token: `bearer ${token}`, type: user.type})
 
             }

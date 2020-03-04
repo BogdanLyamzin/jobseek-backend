@@ -3,7 +3,8 @@ const JwtStrategy = require('passport-jwt').Strategy
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy
-const User = require('../models/User')
+const User = require('../models/User');
+const Admin = require('../models/Admin');
 require('dotenv').config()
 
 const jwtStrategy = new JwtStrategy({
@@ -11,12 +12,18 @@ const jwtStrategy = new JwtStrategy({
     secretOrKey: process.env.TOKEN_SECRET
 }, async function(payload, done) {
     const user = await User.findById(payload._id)
+    const admin = await Admin.findById(payload._id)
     if(user) {
        return done(null, user)
     }
+    if (admin) {
+        return done(null, admin)
+    }
+
     done(null, false, {msg: 'please log in'})
 
 })
+
 const facebookStrategy = new FacebookStrategy({
     clientID: process.env.FACEBOOK_ID,
     clientSecret: process.env.FACEBOOK_SECRET,
