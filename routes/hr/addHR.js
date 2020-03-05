@@ -9,7 +9,6 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-
 module.exports = (app, passport) => {
     app.post('/hr', passport, async (req, res) => {
         const hr = new HR({
@@ -24,15 +23,15 @@ module.exports = (app, passport) => {
         });
         try {
             const result = await hr.save();
-if(result) {
-    await transporter.sendMail({
-        from: 'jobseek', // sender address
-        to: req.body.email, // list of receivers
-        subject: "Hello ✔", // Subject line
-        text: "Hello world?", // plain text body
-        html: "<b>Hello world?</b>" // html body
-    });
-}
+            if(result) {
+                await transporter.sendMail({
+                    from: 'jobseek', // sender address
+                    to: req.body.email, // list of receivers
+                    subject: "Hello ✔", // Subject line
+                    text: "Hello world?", // plain text body
+                    html: "<b>Hello world?</b>" // html body
+                });
+            }
             res.send({
                 status: "Success",
                 result: result,
