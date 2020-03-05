@@ -9,8 +9,8 @@ module.exports = (app, passport) => {
       const {received} = await Vacancy.findById(req.body.vacancyId);
       sent.push({cvId: req.body.cvId, vacancyId: req.body.vacancyId, status: false});
       received.push({cvId: req.body.cvId, vacancyId: req.body.vacancyId, status: false});
-      await Vacancy.findByIdAndUpdate(req.body.vacancyId, {received: received});
-      const result = await Cv.findByIdAndUpdate(req.body.cvId, {sent: sent});
+      await Vacancy.findByIdAndUpdate(req.body.vacancyId, {received: received}, {new: true});
+      const result = await Cv.findByIdAndUpdate(req.body.cvId, {sent: sent}, {new: true});
 
       res.send({
         status: "Success",

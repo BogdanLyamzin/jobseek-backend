@@ -25,8 +25,8 @@ module.exports = (app, passport) => {
         status: req.body.status,
       });
 
-      await Vacancy.findByIdAndUpdate(req.body.vacancyId, {received: received});
-      const result = await Cv.findByIdAndUpdate(req.body.cvId, {sent: sent});
+      await Vacancy.findByIdAndUpdate(req.body.vacancyId, {received: received}, {new: true});
+      const result = await Cv.findByIdAndUpdate(req.body.cvId, {sent: sent}, {new: true});
 
       res.send({
         status: "Success",
