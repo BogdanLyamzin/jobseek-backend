@@ -18,11 +18,13 @@ module.exports = (app, passport) => {
         cvId: req.body.cvId, 
         vacancyId: req.body.vacancyId, 
         status: req.body.status,
+        date: Date.now()
       });
       received.splice(indexReceived, 1, {
         cvId: req.body.cvId, 
         vacancyId: req.body.vacancyId, 
         status: req.body.status,
+        date: Date.now()
       });
 
       await Vacancy.findByIdAndUpdate(req.body.vacancyId, {received: received}, {new: true});
