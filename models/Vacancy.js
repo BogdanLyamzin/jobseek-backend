@@ -5,19 +5,19 @@ const SentReceived = require('./subSchema/SentRecived');
 
 const Vacancy = Schema({
   vacancyName: {
-    type: String,
+    type: Object,
     required: true
   },
   sphere: {
-    type: String,
+    type: Object,
     required: true
   },
   profession: {
-    type: String,
+    type: Object,
     required: true
   },
   category: {
-    type: String,
+    type: Object,
     required: true
   },
   country: {
