@@ -6,7 +6,7 @@ module.exports = mongoose.model("Category", {
         required: true,
     },
     parentId: {
-        type: mongoose.ObjectId,
+        type: [mongoose.ObjectId],
         ref: 'VacancyTemplate' || "Category",
     }
 });
