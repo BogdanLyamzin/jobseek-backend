@@ -9,12 +9,20 @@ const putVacancy = require("./vacancies/putVacancy");
 const getAllVacancy = require("./vacancies/getAllVacancy");
 const getOneVacancy = require("./vacancies/getOneVacancy");
 const deleteVacancy = require("./vacancies/deleteVacancy");
+const vacancyPostSend = require('./vacancies/sentReceived/postSend');
+const vacancyPutSend = require('./vacancies/sentReceived/putSend');
+const vacancyDeleteSend = require('./vacancies/sentReceived/deleteSend');
 
 const getReviews = require("./reviews/getReviews");
 const addReviews = require("./reviews/addReviews");
 const editReviews = require("./reviews/editReviews");
 const deleteReviews = require("./reviews/deleteReviews");
 const getOneReview = require("./reviews/getOneReview");
+
+const getAllReports = require("./reviews/reports/getAllReports");
+const addReports = require("./reviews/reports/addReports");
+const deleteReports = require("./reviews/reports/deleteReports");
+const getOneReports = require("./reviews/reports/getOneReports");
 
 const updateCompany = require("./companies/updateCompany");
 const delCompany = require("./companies/delCompany");
@@ -63,6 +71,9 @@ const delCv = require("./candidates/cv/delCv");
 const getAllCv = require("./candidates/cv/getAllCv");
 const getOneCv = require("./candidates/cv/getOneCv");
 const putCv = require("./candidates/cv/putCv");
+const cvPostSend = require('./candidates/sentReceived/postSend');
+const cvPutSend = require('./candidates/sentReceived/putSend');
+const cvDeleteSend = require('./candidates/sentReceived/deleteSend');
 
 const login = require("./auth/login");
 const mailConfirm = require("./auth/mailConfirm");
@@ -87,12 +98,20 @@ module.exports = (app, passport) => {
     getAllVacancy(app, passport);
     getOneVacancy(app, passport);
     deleteVacancy(app, passport);
+    vacancyPostSend(app, passport);
+    vacancyPutSend(app, passport);
+    vacancyDeleteSend(app, passport);
 
     getReviews(app, passport);
     addReviews(app, passport);
     editReviews(app, passport);
     deleteReviews(app, passport);
     getOneReview(app, passport);
+
+    getAllReports(app, passport); 
+    addReports(app, passport); 
+    deleteReports(app, passport);
+    getOneReports(app, passport);
 
     updateCompany(app, passport);
     delCompany(app, passport);
@@ -142,6 +161,9 @@ module.exports = (app, passport) => {
     getAllCv(app, passport);
     getOneCv(app, passport);
     delCv(app, passport);
+    cvPostSend(app, passport);
+    cvPutSend(app, passport);
+    cvDeleteSend(app, passport);
 
     login(app);
     mailConfirm(app);

@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose");
+
 const Skills = require("./subSchema/Skills");
+const SentReceived = require('./subSchema/SentRecived');
 
 const Vacancy = Schema({
   vacancyName: {
@@ -50,14 +52,16 @@ const Vacancy = Schema({
   },
   hrId: {
     type: Schema.Types.ObjectId,
-    ref: "hr",
+    ref: "HR",
     required: true
   },
   companyId: {
     type: Schema.Types.ObjectId,
-    ref: "company",
+    ref: "Company",
     required: true
   },
+  sent: [SentReceived],
+  received: [SentReceived],
   date: {
     type: Date,
     required: true,

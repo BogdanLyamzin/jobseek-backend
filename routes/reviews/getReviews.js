@@ -1,6 +1,5 @@
 const Review = require('../../models/Review');
 
-
 module.exports = (app, passport) => {
     app.get('/reviews', passport,  async (req, res) => {
         

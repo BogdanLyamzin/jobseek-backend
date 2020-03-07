@@ -1,7 +1,7 @@
 const Vacancy = require("../../models/Vacancy");
 
-module.exports = app => {
-  app.post("/vacancies", async (req, res) => {
+module.exports = (app, passport) => {
+  app.post("/vacancies", passport, async (req, res) => {
     const vacancy = new Vacancy({
       vacancyName: req.body.vacancyName,
       sphere: req.body.sphere,
@@ -14,9 +14,11 @@ module.exports = app => {
       skills: req.body.skills,
       employmentType: req.body.employmentType,
       description: req.body.description,
-      active: req.body.active,
       companyId: req.body.companyId,
       hrId: req.body.hrId,
+      sent: req.body.sent ? req.body.sent : [],
+      received: req.body.received ? req.body.received : [],
+      active: req.body.active,
       date: req.body.date
     });
 

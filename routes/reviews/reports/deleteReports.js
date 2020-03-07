@@ -1,9 +1,9 @@
-const HR = require("../../models/HR");
+const Report = require("../../../models/Report");
 
 module.exports = (app, passport) => {
-  app.get("/hr/:id", passport, async (req, res) => {
+  app.delete("/reports/:id", passport, async (req, res) => {
     try {
-      const result = await HR.findById(req.params.id);
+      const result = await Report.findByIdAndDelete(req.params.id);
       res.send({
         status: "Success",
         result: result
