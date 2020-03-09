@@ -4,6 +4,7 @@ const upload = require("../../utils/uploadPhoto");
 module.exports = (app, passport) => {
     app.post("/companies", passport,  upload.single("avatar"), async (req, res) => {
         const company = new Company({
+            userId: req.body.userId,
             companyName: req.body.companyName,
             phone: req.body.phone,
             email: req.body.email,
