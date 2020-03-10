@@ -3,9 +3,9 @@ const Report = require("../../../models/Report");
 module.exports = (app, passport) => {
   app.post("/reports", passport, async (req, res) => {
     const report = new Report({
-      text: req.body.text,
       name: req.body.name,
       reviewId: req.body.reviewId,
+      reviewText: req.body.reviewText,
       date: req.body.date
     });
 
