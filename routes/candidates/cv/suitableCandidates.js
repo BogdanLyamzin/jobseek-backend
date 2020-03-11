@@ -10,9 +10,9 @@ module.exports = (app, passport) => {
       try {
         const allCvs = await Cv.find({});
 
-        const suitableCandidates = allCvs.filter(({ cvSkill, activeCV }) => {
+        const suitableCandidates = allCvs.filter(({ skills, active }) => {
           let suitableSkillsCount = 0;
-          cvSkill.forEach(({ id, experience }) => {
+          skills.forEach(({ id, experience }) => {
             if (
               skills.find(
                 skill => skill.id === id && skill.experience <= experience
@@ -21,7 +21,7 @@ module.exports = (app, passport) => {
               suitableSkillsCount++;
             }
           });
-          return suitableSkillsCount / skillsCount >= 0.7 && activeCV;
+          return suitableSkillsCount / skillsCount >= 0.7 && active;
         });
 
         res.send({

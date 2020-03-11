@@ -3,9 +3,17 @@ const Cv = require("../../../models/cv/cv");
 module.exports = (app, passport) => {
   app.post("/cvs", passport, async (req, res) => {
     const cv = new Cv({
-      userId: req.body.userId,
-      activeCV: req.body.activeCV,
-      cvSkill: req.body.cvSkill,
+      candidateId: req.body.userId,
+      sphere: req.body.sphere,
+      profession: req.body.profession,
+      category: req.body.category,
+      active: req.body.active,
+      salary: req.body.salary,
+      country: req.body.country,
+      city: req.body.city,
+      skills: req.body.skills,
+      englishLevel: req.body.englishLevel,
+      description: req.body.description,
       sent: req.body.sent ? req.body.sent : [],
       received: req.body.received ? req.body.received : [],
       vacancyName: req.body.vacancyName,

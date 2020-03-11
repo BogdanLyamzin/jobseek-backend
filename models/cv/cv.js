@@ -1,21 +1,54 @@
 const { Schema, model } = require("mongoose");
-
+const Skills = require("../subSchema/Skills");
 const SentReceived = require('../subSchema/SentRecived');
 
 const Cv = Schema({
-  userId: {
+  candidateId: {
     type: Schema.Types.ObjectId,
     ref: "Candidate",
     required: true,
   },
-  activeCV: {
+  sphere: {
+    type: Object,
+    required: true
+  },
+  profession: {
+    type: Object,
+    required: true
+  },
+  category: {
+    type: Object,
+    required: true
+  },
+  active: {
     type: Boolean,
     required: true,
     default: true,
   },
-  cvSkill: {
-    type: Array,
-    required: true,
+  salary: {
+    type: String,
+    required: true
+  },
+  country: {
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  skills: [Skills],
+  employmentType: {
+    type: String,
+    required: true
+  },
+  englishLevel: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
   },
   vacancyName: {
     type: String,

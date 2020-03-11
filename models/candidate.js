@@ -1,6 +1,10 @@
 const {Schema, model} = require("mongoose");
 
 const Candidate = Schema({
+    userId: {
+        type: Schema.Types.ObjectId,
+        required: true
+    },
     name: {
         type: String,
         required: true,
@@ -45,10 +49,6 @@ const Candidate = Schema({
     },
     resumeJobs:{
         type: Object,
-        required: true,
-    },
-    levelEng: {
-        type: String,
         required: true,
     },
     active: {

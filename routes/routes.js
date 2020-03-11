@@ -81,7 +81,7 @@ const register = require("./auth/register");
 const resetPassport = require("./auth/resetpassword");
 const setNewPass = require("./auth/setNewPass");
 const socialAuth = require("./auth/socialAuth");
-const admin = require("./auth/admin")
+const admin = require("./auth/admin");
 
 const suitableCandidates = require("./candidates/cv/suitableCandidates");
 const suitableVacancies = require("./vacancies/suitableVacancies");
@@ -108,8 +108,8 @@ module.exports = (app, passport) => {
     deleteReviews(app, passport);
     getOneReview(app, passport);
 
-    getAllReports(app, passport); 
-    addReports(app, passport); 
+    getAllReports(app, passport);
+    addReports(app, passport);
     deleteReports(app, passport);
     getOneReports(app, passport);
 
@@ -171,7 +171,7 @@ module.exports = (app, passport) => {
     resetPassport(app);
     setNewPass(app);
     socialAuth(app);
-    admin(app)
+    admin(app);
 
     suitableCandidates(app, passport);
     suitableVacancies(app, passport);

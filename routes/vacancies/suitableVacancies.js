@@ -4,8 +4,8 @@ const Vacancy = require("../../models/Vacancy");
 module.exports = (app, passport) => {
     app.get("/suitableVacancies/:id", passport, async (req, res) => {
         try {
-            const { cvSkill } = await Cv.findById(req.params.id);
-            const skillsCount = cvSkill.length;
+            const { skills } = await Cv.findById(req.params.id);
+            const skillsCount = skills.length;
 
             try {
                 const allVacancy = await Vacancy.find({});
@@ -14,7 +14,7 @@ module.exports = (app, passport) => {
                     let suitableSkillsCount = 0;
                     skills.forEach(({ id, experience }) => {
                         if (
-                            cvSkill.find(
+                            skills.find(
                                 skill => skill.id === id && skill.experience <= experience
                             )
                         ) {

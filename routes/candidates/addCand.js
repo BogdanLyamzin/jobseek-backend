@@ -5,6 +5,7 @@ module.exports = (app, passport) => {
     app.post("/candidates", passport, async (req, res) => {
 
         const candidate = new Candidate({
+            userId: req.body.userId,
             name: req.body.name,
             avatar: req.body.avatar ? req.body.avatar : null,
             lastName: req.body.lastName,
@@ -16,7 +17,6 @@ module.exports = (app, passport) => {
             facebookLink: req.body.facebookLink,
             linkedinLink: req.body.linkedinLink,
             resumeJobs: req.body.resumeJobs,
-            levelEng: req.body.levelEng,
             active: req.body.active,
             date: req.body.date
         });
