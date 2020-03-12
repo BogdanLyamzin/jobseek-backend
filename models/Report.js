@@ -1,11 +1,11 @@
 const { Schema, model } = require("mongoose");
 
 const Report = Schema({
-  text: {
+  name: {
     type: String,
     required: true,
   },
-  name: {
+  reviewText: {
     type: String,
     required: true,
   },
@@ -18,7 +18,7 @@ const Report = Schema({
     type: Date,
     required: true,
     default: Date.now,
-  }
+  },
 });
 
 module.exports = model("Report", Report);

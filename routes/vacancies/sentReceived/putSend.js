@@ -18,15 +18,17 @@ module.exports = (app, passport) => {
         cvId: req.body.cvId, 
         vacancyId: req.body.vacancyId, 
         status: req.body.status,
+        date: Date.now()
       });
       received.splice(indexReceived, 1, {
         cvId: req.body.cvId, 
         vacancyId: req.body.vacancyId, 
         status: req.body.status,
+        date: Date.now()
       });
 
-      await Cv.findByIdAndUpdate(req.body.cvId, {received: received});
-      const result = await Vacancy.findByIdAndUpdate(req.body.vacancyId, {sent: sent});
+      await Cv.findByIdAndUpdate(req.body.cvId, {received: received}, {new: true});
+      const result = await Vacancy.findByIdAndUpdate(req.body.vacancyId, {sent: sent}, {new: true});
 
       res.send({
         status: "Success",

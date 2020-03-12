@@ -1,6 +1,10 @@
 const {Schema, model} = require("mongoose");
 
 const Company = Schema({
+    userId: {
+        type: Schema.Types.ObjectId,
+        required: true
+    },
     companyName: {
         type: String,
         required: true
