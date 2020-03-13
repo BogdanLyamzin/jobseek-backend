@@ -1,6 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const HR = Schema({
+  userId: {
+    type: Schema.Types.ObjectId
+  },
   name: {
     type: String,
     required: true
