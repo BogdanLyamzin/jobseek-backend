@@ -15,16 +15,5 @@ module.exports = (app, passport) => {
                 message: err,
             });
         }
-        VacancyTemplate.findByIdAndUpdate(req.params.id, req.body, (err, updateVacancy) => {
-            if (err) res.send({
-                status: "error",
-                message: 'Не удаллось изменить вакансию'
-            });
-            
-            else res.send({
-                status: "Success",
-                result: updateVacancy,
-            });
-        });
     });
 };
