@@ -9,7 +9,7 @@ module.exports = (app, passport) => {
     app.post('/hr', passport, async (req, res) => {
         const user = await User.findOne({email: req.body.email});
         if (user) {
-            return res.json({status: "Error", message: "User already exist"})
+            return res.json({status: "Error", message: "HR з такою поштою вже зарегістровано"})
         }
         const password = passwordGenerator(12, false)
         
@@ -40,7 +40,7 @@ module.exports = (app, passport) => {
                 await transporter.sendMail(regHr(req.body.email, password));
                 res.send({
                     status: "Success",
-                    result: result,
+                    result: hr,
                 });
             }
         } catch (err) {
