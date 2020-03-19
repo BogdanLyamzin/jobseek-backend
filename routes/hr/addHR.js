@@ -12,7 +12,7 @@ module.exports = (app, passport) => {
             return res.json({status: "Error", message: "User already exist"})
         }
         const password = passwordGenerator(12, false)
-        console.log(password)
+        
         const hashedPassword = await bcrypt.hash(password, 10)
         const newUser = new User({
             email: req.body.email,
@@ -30,7 +30,7 @@ module.exports = (app, passport) => {
                 email: req.body.email,
                 companyId: req.body.companyId,
                 active: req.body.active,
-                avatar: req.body.avatar ? req.body.avatar : "avatar",
+                avatar: req.body.avatar ? req.body.avatar : null,
                 date: req.body.date,
             });
 

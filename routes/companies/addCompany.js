@@ -14,7 +14,7 @@ module.exports = (app, passport) => {
             website: req.body.website,
             facebookLink: req.body.facebookLink,
             linkedinLink: req.body.linkedinLink,
-            avatar: req.body.avatar ? req.body.avatar : "avatar",
+            avatar: req.body.avatar ? req.body.avatar : null,
             description: req.body.description
         });
         if (req.file) {
