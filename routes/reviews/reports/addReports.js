@@ -1,5 +1,5 @@
 const Report = require("../../../models/Report");
-const queryCreator = require('../../utils/queryCreator');
+const queryCreator = require('../../../utils/queryCreator');
 
 module.exports = (app, passport) => {
   app.post("/reports", passport, async (req, res) => {
