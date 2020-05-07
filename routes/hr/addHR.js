@@ -1,9 +1,11 @@
-const HR = require("../../models/HR");
-const regHr = require("../../emails/registerHr");
 const bcrypt = require('bcrypt');
 const passwordGenerator = require("password-generator");
+
+const HR = require("../../models/HR");
 const User = require('../../models/User');
+const regHr = require("../../emails/registerHr");
 const transporter = require("../../configs/sendMail");
+const queryCreator = require('../../utils/queryCreator');
 
 module.exports = (app, passport) => {
     app.post('/hr', passport, async (req, res) => {
@@ -24,14 +26,7 @@ module.exports = (app, passport) => {
             const existUser = await User.findOne({email: req.body.email});
             const hr = new HR({
                 userId: existUser._id,
-                name: req.body.name,
-                lastName: req.body.lastName,
-                phone: req.body.phone,
-                email: req.body.email,
-                companyId: req.body.companyId,
-                active: req.body.active,
-                avatar: req.body.avatar ? req.body.avatar : null,
-                date: req.body.date,
+                ...queryCreator(req.body),
             });
 
             const result = await hr.save();

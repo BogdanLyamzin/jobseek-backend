@@ -1,15 +1,10 @@
 const Report = require("../../../models/Report");
+const queryCreator = require('../../utils/queryCreator');
 
 module.exports = (app, passport) => {
   app.post("/reports", passport, async (req, res) => {
-    const report = new Report({
-      name: req.body.name,
-      reviewId: req.body.reviewId,
-      reviewText: req.body.reviewText,
-      date: req.body.date
-    });
-
     try {
+      const report = new Report(queryCreator(req.body));
       const result = await report.save();
       res.send({
         status: "Success",

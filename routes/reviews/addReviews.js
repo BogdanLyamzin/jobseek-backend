@@ -1,16 +1,10 @@
 const Review = require("../../models/Review");
+const queryCreator = require('../../utils/queryCreator');
 
 module.exports = (app, passport) => {
     app.post('/reviews', passport, async (req, res) => {
-        const review = new Review({
-            reviewTxt: req.body.reviewTxt,
-            companyId: req.body.companyId,
-            candidateName: req.body.candidateName,
-            candidateId: req.body.candidateId,
-            date: req.body.date,
-        });
-
         try {
+            const review = new Review(queryCreator(req.body));
             const result = await review.save();
             res.send({
                 status: "Success",

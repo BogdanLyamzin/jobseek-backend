@@ -1,20 +1,19 @@
 const { Schema } = require("mongoose");
 
-const Skills = new Schema({
-  id: {
+const Category = new Schema({
+  _id: {
+    type: Schema.Types.ObjectId,
+    ref: "Category",
+    required: true,
+  },
+  categoryName: {
     type: String,
     required: true,
   },
-  name: {
-    type: String,
+  parentId: {
+    type: Array,
     required: true,
   },
-  experience: {
-    type: Number,
-    required: true,
-    min: 0,
-    max: 8,
-  }
 }, { _id : false }, { versionKey: false });
 
-module.exports = Skills;
+module.exports = Category;
