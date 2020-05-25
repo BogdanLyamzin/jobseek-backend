@@ -9,19 +9,19 @@ module.exports = (app, passport) => {
           status: "Success",
           result: result[0],
         });
-      }
-
-      const result = await HR.findById(req.params.id);
-      if (result) {
-        res.send({
-          status: "Success",
-          result,
-        });
       } else {
-        res.send({
-          status: "Error",
-          message: `HR with id ${id} is not found.`,
-        });
+        const result = await HR.findById(req.params.id);
+        if (result) {
+          res.send({
+            status: "Success",
+            result,
+          });
+        } else {
+          res.send({
+            status: "Error",
+            message: `HR with id ${id} is not found.`,
+          });
+        }
       }
     } catch (err) {
       res.send({
