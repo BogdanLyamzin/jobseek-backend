@@ -8,17 +8,24 @@ module.exports = (app, passport) => {
     }
 
     try {
-      const result = await HR.findByIdAndUpdate(req.params.id, req.body, {new: true});
-      res.send({
-        status: "Success",
-        result: result,
-      });
+      const hr = await HR.findById(req.params.id);
+      if(hr) {
+        const result = await HR.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.send({
+          status: "Success",
+          result,
+        });
+      } else {
+        res.send({
+          status: "Error",
+          message: `HR with id ${id} is not found.`,
+        });
+      }
     } catch (err) {
       res.send({
         status: "Error",
-        message: err,
+        message: `Error happened on server: "${err}" `,
       });
     }
   });
-
 };

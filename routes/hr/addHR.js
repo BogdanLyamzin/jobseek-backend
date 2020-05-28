@@ -1,53 +1,51 @@
-const HR = require("../../models/HR");
-const regHr = require("../../emails/registerHr");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const passwordGenerator = require("password-generator");
-const User = require('../../models/User');
+
+const HR = require("../../models/HR");
+const User = require("../../models/User");
+const regHr = require("../../emails/registerHr");
 const transporter = require("../../configs/sendMail");
+const queryCreator = require("../../utils/queryCreator");
 
 module.exports = (app, passport) => {
-    app.post('/hr', passport, async (req, res) => {
-        const user = await User.findOne({email: req.body.email});
-        if (user) {
-            return res.json({status: "Error", message: "HR з такою поштою вже зарегістровано"})
-        }
-        const password = passwordGenerator(12, false)
-        
-        const hashedPassword = await bcrypt.hash(password, 10)
-        const newUser = new User({
-            email: req.body.email,
-            password: hashedPassword,
-            type:'hr'
+  app.post("/hr", passport, async (req, res) => {
+    try {
+      const user = await User.findOne({ email: req.body.email });
+      if (user) {
+        return res.json({
+          status: "Error",
+          message: "HR з такою поштою вже зареєстровано",
         });
-        try {
-            await newUser.save();
-            const existUser = await User.findOne({email: req.body.email});
-            const hr = new HR({
-                userId: existUser._id,
-                name: req.body.name,
-                lastName: req.body.lastName,
-                phone: req.body.phone,
-                email: req.body.email,
-                companyId: req.body.companyId,
-                active: req.body.active,
-                avatar: req.body.avatar ? req.body.avatar : null,
-                date: req.body.date,
-            });
+      }
 
-            const result = await hr.save();
-            if (result) {
+      const password = passwordGenerator(12, false);
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const newUser = new User({
+        email: req.body.email,
+        password: hashedPassword,
+        type: "hr",
+      });
 
-                await transporter.sendMail(regHr(req.body.email, password));
-                res.send({
-                    status: "Success",
-                    result: hr,
-                });
-            }
-        } catch (err) {
-            res.send({
-                status: "Error",
-                message: err,
-            });
-        }
-    });
+      await newUser.save();
+      const existUser = await User.findOne({ email: req.body.email });
+      const hr = new HR({
+        userId: existUser._id,
+        ...queryCreator(req.body),
+      });
+
+      const result = await hr.save();
+      if (result) {
+        await transporter.sendMail(regHr(req.body.email, password));
+        res.send({
+          status: "Success",
+          result,
+        });
+      }
+    } catch (err) {
+      res.send({
+        status: "Error",
+        message: `Error happened on server: "${err}" `,
+      });
+    }
+  });
 };

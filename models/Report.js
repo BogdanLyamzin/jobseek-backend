@@ -19,6 +19,6 @@ const Report = Schema({
     required: true,
     default: Date.now,
   },
-});
+}, { versionKey: false });
 
 module.exports = model("Report", Report);

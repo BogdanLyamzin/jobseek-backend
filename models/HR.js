@@ -27,18 +27,16 @@ const HR = Schema({
   },
   active: {
     type: Boolean,
-    required: true,
     default: true
   },
   avatar: {
     type: String,
-    required: false
+    default: null,
   },
   date: {
     type: Date,
-    required: true,
     default: Date.now
   }
-});
+}, { versionKey: false });
 
 module.exports = model("HR", HR);

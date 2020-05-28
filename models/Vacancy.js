@@ -1,25 +1,17 @@
 const { Schema, model } = require("mongoose");
 
 const Skills = require("./subSchema/Skills");
+const Sphere = require("./subSchema/Sphere");
+const Category = require("./subSchema/Category");
+const Profession = require("./subSchema/Profession");
+const VacancyName = require("./subSchema/VacancyName");
 const SentReceived = require('./subSchema/SentRecived');
 
 const Vacancy = Schema({
-  vacancyName: {
-    type: Object,
-    required: true
-  },
-  sphere: {
-    type: Object,
-    required: true
-  },
-  profession: {
-    type: Object,
-    required: true
-  },
-  category: {
-    type: Object,
-    required: true
-  },
+  sphere: Sphere,
+  category: Category,
+  profession: Profession,
+  vacancyName: VacancyName,
   country: {
     type: String,
     required: true
@@ -47,7 +39,6 @@ const Vacancy = Schema({
   },
   active: {
     type: Boolean,
-    required: true,
     default: true
   },
   hrId: {
@@ -64,9 +55,8 @@ const Vacancy = Schema({
   received: [SentReceived],
   date: {
     type: Date,
-    required: true,
     default: Date.now
   }
-});
+}, { versionKey: false });
 
 module.exports = model("Vacancy", Vacancy);

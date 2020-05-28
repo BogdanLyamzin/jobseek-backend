@@ -21,6 +21,6 @@ const SentReceived = new Schema({
     required: true,
     default: Date.now,
   },
-}, { _id : false });
+}, { _id : false }, { versionKey: false });
 
 module.exports = SentReceived;
